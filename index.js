@@ -59,6 +59,13 @@ app.get('/contacto', function(req, res) {
 
  });
 
+//Ruta del Administrador
+app.get('/admin', function(req, res) {
+
+    res.render('admin', );
+
+ });
+
 
  function baseDatos (){
     console.log("La base de datos se crea");
