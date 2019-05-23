@@ -62,6 +62,24 @@ app.get('/contacto', function(req, res) {
 //Ruta del Administrador
 app.get('/admin', function(req, res) {
 
+    fs.readFile('baseDatos.txt','utf8',function(err,data){
+
+        if(err) throw err;
+        var datos = data.split('\n');
+
+
+        datos.forEach(function(dato) {
+            var linea=dato.split(' ');
+            var pagina=linea[1];
+            console.log(pagina);
+          });
+
+
+       
+       
+      //  console.log(pagina);
+    });
+
     res.render('admin', );
 
  });
