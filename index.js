@@ -37,6 +37,8 @@ var contexto = [
 //Ruta de inicio
 app.get('/inicio', function(req, res) {
 
+  //  fs.writeFile('baseDatos.txt','pagina: Inicio Fecha: '+ new Date(), 'utf8',baseDatos);
+    fs.appendFileSync("baseDatos.txt", 'pagina: Inicio Fecha: '+ new Date() + '\n', "utf8",{'flags': 'a+'})
     res.render('plantilla', contexto[0]);
 
  });
@@ -44,6 +46,7 @@ app.get('/inicio', function(req, res) {
  //Ruta de Sobre mi
 app.get('/sobre', function(req, res) {
 
+    fs.appendFileSync("baseDatos.txt", 'pagina: Sobre Fecha: '+ new Date() + '\n', "utf8",{'flags': 'a+'})
     res.render('plantilla', contexto[1]);
 
  });
@@ -51,9 +54,17 @@ app.get('/sobre', function(req, res) {
  //Ruta de Contacto
 app.get('/contacto', function(req, res) {
 
+    fs.appendFileSync("baseDatos.txt", 'pagina: Contacto Fecha: '+ new Date() + '\n', "utf8",{'flags': 'a+'})
     res.render('plantilla', contexto[2]);
 
  });
+
+
+ function baseDatos (){
+    console.log("La base de datos se crea");
+ }
+
+
 
 
 //Servidor creado
