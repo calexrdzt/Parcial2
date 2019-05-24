@@ -67,21 +67,47 @@ app.get('/admin', function(req, res) {
         if(err) throw err;
         var datos = data.split('\n');
 
+        var paginas= [];
+        var conInicio=0;
+        var conSobre=0;
+        var conContacto=0;
 
         datos.forEach(function(dato) {
             var linea=dato.split(' ');
-            var pagina=linea[1];
-            console.log(pagina);
+            paginas.push(linea[1])
+            
           });
 
+          
+        paginas.forEach(function(pagin){
 
-       
-       
-      //  console.log(pagina);
+            if(pagin == "Sobre"){
+                conSobre++;
+            }
+            else if(pagin == "Inicio"){
+                conInicio++;
+            }
+            else if(pagin == "Contacto"){
+                conContacto++;
+            }  
+        });
+        console.log(paginas);
+        console.log("Sobre: "+conInicio + " Inicio: "+conSobre+ " Contacto: "+conContacto);
+
+        var contextoAdmin={
+            layout: false,
+            conInicio: conInicio,
+            conSobre: conSobre,
+            conContacto: conContacto
+        }
+
+        res.render('admin', contextoAdmin);
+
+
     });
 
-    res.render('admin', );
 
+   
  });
 
 
